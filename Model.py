@@ -32,7 +32,7 @@ class Model:
         model.add(Dropout(0.2))
 
         model.add(Dense(2, activation="softmax"))
-        optimizer = tf.keras.optimizers.Adam(lr = 0.001, decay = 1e-6)
+        optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001, decay = 1e-6)
         model.compile(loss="sparse_categorical_crossentropy",optimizer=optimizer)
 
         return model
@@ -65,8 +65,8 @@ class Model:
         accuracy = accuracy_score(y_test,predictions)
         print(">> Accuracy: ",accuracy)
         print(">> Increase Acc: ",(found_increase/expected_increase)," Decrese Acc: ",(found_decrese/expected_decrese))
-        #loss = self.model.evaluate(x_test,y_test)
-        #print("Loss re: ",loss)
+        loss = self.model.evaluate(x_test,y_test)
+        print("Loss re: ",loss)
 
     def predict(self,sample):
         sample = sample.reshape(-1, 1, len(sample[0]))

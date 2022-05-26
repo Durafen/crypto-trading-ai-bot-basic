@@ -11,5 +11,5 @@ TESTING_MONTHS = ["2020_10"]
 
 # Model and Auto Trader
 CHANGE_RATE_THRESHOLD = 0.005
-TRAINING_WINDOW = 360 # Window to use for training in minutes
-LABELING_WINDOW = 360 # How far ahead to look for labeling / prediction
+TRAINING_WINDOW = 720 # Window to use for training in minutes
+LABELING_WINDOW = 720 # How far ahead to look for labeling / prediction

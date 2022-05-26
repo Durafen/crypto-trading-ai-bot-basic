@@ -58,7 +58,8 @@ if __name__ == '__main__':
 
         print("> Using Coinbase API to build dataset for ",COIN_PAIR)
 
-    elif args.train_and_trade:
+#    else args.train_and_trade:
+    else:
         print("> Creating Training Data for ", COIN_PAIR)
         data = dataset.loadCoinData(COIN_PAIR, TRAINING_MONTHS)
         x_train, y_train, _ = dataset.createTrainTestSets(COIN_PAIR, data, training_window=TRAINING_WINDOW, labeling_window=LABELING_WINDOW)
@@ -68,14 +69,14 @@ if __name__ == '__main__':
         x_test, y_test, prices = dataset.createTrainTestSets(COIN_PAIR, data, training_window=TRAINING_WINDOW, labeling_window=LABELING_WINDOW)
 
         test_model = Model("AutoTraderAI", x_train)
-        test_model.train(x_train, y_train, batch_size=64, epochs=10)
-        # test_model.evaluate(x_test,y_test)
+        test_model.train(x_train, y_train, batch_size=8, epochs=10)
+        test_model.evaluate(x_test,y_test)
 
-        auto_trader = AutoTrader(test_model)
-        auto_trader.runSimulation(x_test, prices)
-    else:
-        print("> The biggest mistake you can make in life is to waste your time. – Jerry Bruckner")
-        print("> P.S. Use an argument next time: --collect_coins or --train_and_trade")
+        #auto_trader = AutoTrader(test_model)
+        #auto_trader.runSimulation(x_test, prices)
+#    else:
+#        print("> The biggest mistake you can make in life is to waste your time. – Jerry Bruckner")
+#        print("> P.S. Use an argument next time: --collect_coins or --train_and_trade")
 
 
 
